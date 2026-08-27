@@ -1,0 +1,40 @@
+# pubspec.yaml — Flutter project manifest.
+#
+# This is the Flutter/Dart equivalent of package.json (Node) or requirements.txt
+# (Python). It declares the project's name, version, SDK constraints, and any
+# third-party packages the app depends on.
+#
+# For this assignment we intentionally use zero third-party packages — the
+# Flutter Material library covers everything we need. Fewer dependencies means
+# a smaller build, fewer moving parts, and no version-conflict headaches.
+
+name: measures_converter
+description: A Flutter application that converts between metric and imperial units.
+
+# The `publish_to: 'none'` line prevents `flutter pub publish` from accidentally
+# uploading this student project to pub.dev.
+publish_to: 'none'
+
+# App version in the form <semver>+<build>. The build number after the + is
+# the integer used by app stores. Not important for a local assignment run.
+version: 1.0.0+1
+
+environment:
+  # Minimum Dart SDK. `^3.0.0` = any 3.x version. If `flutter pub get` complains
+  # that your SDK is too old, upgrade Flutter (`flutter upgrade`).
+  sdk: '^3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # Lint rules recommended by the Flutter team — matches Effective Dart style.
+  flutter_lints: ^4.0.0
+
+# The `flutter:` section below configures assets, fonts, and Material behavior.
+# We use Material Design defaults; no custom fonts or images are bundled.
+flutter:
+  uses-material-design: true

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml — Android app manifest.
+
+    Every Android application must contain a manifest file. It declares to the
+    Android OS: the app's package identity, its entry-point Activity (screen),
+    the theme it uses at launch, and any permissions it needs.
+
+    This file is one of the deliverables required by the assignment.
+
+    Notes on each element below:
+      - <application> configures the app process. Its android:label becomes the
+        launcher-icon caption.
+      - <activity android:name=".MainActivity"> is the single Flutter Activity
+        that hosts all Flutter UI. Flutter renders into a FlutterView inside
+        this Activity, so the app only needs one.
+      - The <meta-data> tags tell Flutter's embedding what launch theme to use
+        and which layout to inflate.
+      - The <queries> block is required by Android 11+ so the Flutter engine can
+        query text-processing intents (used by cursor tools). It grants no
+        permissions — it just declares intent visibility.
+
+    This app requires NO custom permissions (no camera, network, storage, etc.)
+    because it performs local math only. Keeping the permission list empty is a
+    security best practice.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="measures_converter"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- Show a launch-screen theme until the Flutter UI is ready to draw. -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!-- The MAIN + LAUNCHER intent filter marks this Activity as the
+                 one shown when the user taps the app icon in the launcher. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Required by the Flutter framework so it can find the correct Dart
+             entrypoint at runtime. Do not remove. -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+
+    <!-- Text-processing intent visibility (Android 11+ package-visibility rule). -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+</manifest>
